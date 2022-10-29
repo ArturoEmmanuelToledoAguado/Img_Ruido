@@ -8,14 +8,8 @@ for k=1:9
     %Abrir la imagen
     img=imread(string(ruta(k)));
 
-    %Ruido Gaussiano
-    imgRG=imnoise(img,'gaussian');
-
-    %Ruido Impulsivo (Sal y Pimienta)
-    imgRSP=imnoise(img,'salt & pepper');
-
-    %Ruido Uniforme (multiplicativo)
-    imgRUm=imnoise(img,'speckle');
+    %Ruidos
+    [imgRG,imgRSP,imgRUm]=Ruidos(img);
 
     %Ruido Uniforme (frecuencial)
     clear matR;
@@ -45,6 +39,48 @@ for k=1:9
     subplot(2,3,5)
     imshow(imgRUf)
     title('Ruido Uniforme Frecuencial')
+end
+
+function [imgRG,imgRSP,imgRUm]=Ruidos(img)
+    %Valores predeterminados
+    m=0;%Gauss (media)
+    d=.05;%Sal y pimienta (densidad del ruido)
+    var_speckle=.05;%Mult (varianza de ruido multiplicativo)
+    dims=[1 60];
+    
+    for k=1:3
+        if k==1
+            %Interfaz "menu" para ingresar el valor de la media
+            prompt1="Ingrese el valor de la media del ruido Gaussiano";
+            t1="Media Ruido Gaussiano";
+            definput1={'0'};
+            n1=inputdlg(prompt1,t1,dims,definput1);
+            m=str2double(n1);
+            
+            %Ruido Gaussiano
+            imgRG=imnoise(img,'gaussian',m);
+        elseif k==2
+            %Interfaz "menu" para ingresar el valor de la media
+            prompt2="Ingrese el valor de la densidad del ruido Impulsivo";
+            t2="Densidad del Ruido Impulsivo";
+            definput2={'.05'};
+            n2=inputdlg(prompt2,t2,dims,definput2);
+            d=str2double(n2);
+            
+            %Ruido Impulsivo (Sal y Pimienta)
+            imgRSP=imnoise(img,'salt & pepper',d);
+        elseif k==3
+            %Interfaz "menu" para ingresar el valor de la media
+            prompt3="Ingrese el valor de la varianza del ruido multiplicativo";
+            t3="Densidad del Ruido Multiplicativo";
+            definput3={'.05'};
+            n3=inputdlg(prompt3,t3,dims,definput3);
+            var_speckle=str2double(n3);
+            
+            %Ruido Uniforme (multiplicativo)
+            imgRUm=imnoise(img,'speckle',var_speckle);
+        end
+    end
 end
 
 function imgR=imagenR(img)
