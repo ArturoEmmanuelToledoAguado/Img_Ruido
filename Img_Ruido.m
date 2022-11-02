@@ -14,14 +14,24 @@ imgRSP=imnoise(img,'salt & pepper');
 %Ruido Uniforme (multiplicativo)
 imgRUm=imnoise(img,'speckle');
 
-% %Vector del coseno
-% x=1:2*pi/8783350:2*pi;
-% %Pasamos de uint8 a double
-% img=double(img);
-% %Ruido Uniforme (frecuencial)
-% imgRUf=img+100*cos(x);
-% %Pasamos de double a uint8
-% imgRUf=uint8(imgRUf)
+%Vector del coseno
+[f c]=size(img);
+x=0:2*pi/(f*c/3):2*pi;
+sig=100*cos(x);
+cont=0;
+for i=1:f
+    for j=1:c/3
+        cont=cont+1;
+        mat(i,j)=sig(cont);
+    end
+end
+%Pasamos de uint8 a double
+img=double(img);
+%Ruido Uniforme (frecuencial)
+imgRUf=img+mat;
+%Pasamos de double a uint8
+imgRUf=uint8(imgRUf);
+img=uint8(img);
 
 %Mostrar imagenes
 figure
@@ -38,5 +48,5 @@ subplot(2,3,4)
 imshow(imgRUm)
 title('Ruido Uniforme Multiplicativo')
 subplot(2,3,5)
-% imshow(imgRUf)
-% title('Ruido Uniforme Frecuencial')
+imshow(imgRUf)
+title('Ruido Uniforme Frecuencial')
