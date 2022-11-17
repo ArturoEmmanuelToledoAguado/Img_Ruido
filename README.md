@@ -51,7 +51,7 @@ El efecto de este ruido es que se generan valores aleatorios que varián poco re
 * Se produce normalmente en la cuantificación que se realiza en el proceso de digitalización
 * Matemáticamente este ruido se modela con una función de distribución no Gaussiana o escalón como la mostrada en la figura
 
-<div align="center"><img src="DocIMG/SyP.png"></div>
+<div align="center"><img src="DocIMG/SyP.PNG"></div>
 
 ### RUIDO UNIFORME
 * El ruido que afecta a la imagen sigue una distribución uniforme
