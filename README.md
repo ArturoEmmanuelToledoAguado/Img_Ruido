@@ -34,11 +34,10 @@ Este ruido puede estar acompañado por secuencias impulsivas, caracterizadas por
   * Afecta a la imagen completa
   * La intensidad de todos los pixeles se ve alterada en mayor o menor medida
 * En el ruido de tipo Gaussiano, todos los píxeles que componen la imagen cambian su valor en base a una distribución Gaussiana
-* El ruido esta centrado en el valor $z$ **(que corresponde con el valor de intensidad del pixel)** y tiene una desviación estándar de sigma ($\sigma$)
+* El ruido esta centrado en el valor $z$ **(que corresponde con el valor de intensidad del pixel)** y tiene una desviación estándar de sigma ( $\sigma$ )
+<div align="center"><img src="DocIMG/Rg.png"></div>
 
-//Poner imagen 
-
-* Nota.- El alto y ancho dependen del valor de la desviación estándar de sigma ($\sigma$)
+* Nota.- El alto y ancho dependen del valor de la desviación estándar de sigma ( $\sigma$ )
 * Menos amplitud = menor afectación
 
 El efecto de este ruido es que se generan valores aleatorios que varián poco respecto al valor original del pixel. La mayor parte de los valores establecidos quedaran similares al original, por lo cual sólo se percibirá alguna modificacion en los elementos.
@@ -49,4 +48,4 @@ El efecto de este ruido es que se generan valores aleatorios que varián poco re
 * No afecta a todos los pixeles
 * El ruido eléctrico interfiere en el canal de comunicaciones y afecta 
 
-<a href="https://github.com/ArturoEmmanuelToledoAguado/Ecu-Histograma">Código</a>
+<a href="https://github.com/ArturoEmmanuelToledoAguado/Ecu-Histograma/blob/main/Ecualizar_Img.m">Código</a>
